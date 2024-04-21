@@ -24,7 +24,7 @@ app.get("/api/:date?", function (req, res) {
   var date_param = req.params.date;
   var date = new Date();
   if (date_param)
-    date = Number.isInteger(parseInt(date_param))
+    date = date_param.match(/^\d+$/)
       ? new Date(parseInt(date_param))
       : new Date(date_param);
   if (date == "Invalid Date") res.json({ error: "Invalid Date" });
